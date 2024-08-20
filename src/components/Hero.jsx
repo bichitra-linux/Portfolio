@@ -19,7 +19,7 @@ const Hero = () => {
                         Hi, I'm <span className='text-[#915EFF]'>Bichitra</span>
                     </h1>
                     <p className={`${styles.heroSubText} mt-2 text-white-100`}>
-                        Your very own<br className='sm:block hidden' />
+                        Your very own MERN Stack<br className='sm:block hidden' />
                         &nbsp;&&nbsp;Full Stack Developer
                     </p>
                 </div>
