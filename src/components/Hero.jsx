@@ -19,8 +19,8 @@ const Hero = () => {
                         Hi, I'm <span className='text-[#915EFF]'>Bichitra</span>
                     </h1>
                     <p className={`${styles.heroSubText} mt-2 text-white-100`}>
-                        I develop nothing, CTRL+C<br className='sm:block hidden' />
-                        &nbsp;&&nbsp;CTRL+V Does it's work
+                        Your very own<br className='sm:block hidden' />
+                        &nbsp;&&nbsp;Full Stack Developer
                     </p>
                 </div>
             </div>
