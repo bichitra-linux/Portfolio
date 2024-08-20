@@ -33,6 +33,7 @@ export const navLinks = [
     {
         id: "blog",
         title: "Blog",
+        url: "https://blog.bichitra.com.np",
     },
     {
         id: "work",
