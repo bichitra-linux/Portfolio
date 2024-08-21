@@ -1,24 +1,26 @@
-import { BrowserRouter } from "react-router-dom";
-import { About, Contact, Experience, Feedbacks, Hero, Navbar, Tech, Works, StarsCanvas } from "./components";
+import React from "react";
+import Header from "./components/header/Header";
+import Nav from "./components/nav/Nav";
+import About from "./components/about/About";
+import Experience from "./components/experience/Experience";
+import Portfolio from "./components/portfolio/Portfolio";
+import Testimonials from "./components/testimonials/Testimonials";
+import Contact from "./components/contact/Contact";
+import Footer from "./components/footer/Footer";
 
-const App = () => (
-  <BrowserRouter>
-    <div className="relative z-0 bg-primary">
-      <div className="bg-hero-pattern bg-cover bg-no-repeat bg-center">
-        <Navbar />
-        <Hero />
-      </div>
+const App = () => {
+  return (
+    <>
+      <Header />
+      <Nav />
       <About />
       <Experience />
-      <Tech />
-      <Works />
-      <Feedbacks />
-      <div className="relative z-0">
-        <Contact />
-        <StarsCanvas />
-      </div>
-    </div>
-  </BrowserRouter>
-);
+      <Portfolio />
+      <Testimonials />
+      <Contact />
+      <Footer />
+    </>
+  );
+};
 
-export default React.memo(App);
+export default App;
