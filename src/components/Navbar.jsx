@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import { Link } from "react-router-dom";
 
 import { styles } from "../styles";
@@ -11,13 +11,14 @@ const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 100);
-    };
+    const handleScroll = () => setScrolled(window.scrollY > 100);
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  const handleSetActive = useCallback((title) => setActive(title), []);
+  const handleToggle = useCallback(() => setToggle((prev) => !prev), []);
 
   const { paddingX } = styles;
 
@@ -44,7 +45,7 @@ const Navbar = () => {
             <li
               key={nav.id}
               className={`${active === nav.title ? "text-white" : "text-secondary"} hover:text-white text-[18px] font-medium cursor-pointer`}
-              onClick={() => setActive(nav.title)}
+              onClick={() => handleSetActive(nav.title)}
             >
               <a href={nav.url ? nav.url : `#${nav.id}`} target={nav.url ? "_blank" : "_self"} rel={nav.url ? "noopener noreferrer" : ""}>
                 {nav.title}
@@ -58,7 +59,7 @@ const Navbar = () => {
             src={toggle ? close : menu}
             alt="menu"
             className="w-[28px] h-[28px] object-contain"
-            onClick={() => setToggle(!toggle)}
+            onClick={handleToggle}
           />
 
           <div className={`${!toggle ? "hidden" : "flex"} p-6 black-gradient absolute top-20 right-0 mx-4 my-2 min-w-[140px] z-10 rounded-xl`}>
@@ -68,8 +69,8 @@ const Navbar = () => {
                   key={nav.id}
                   className={`font-poppins font-medium cursor-pointer text-[16px] ${active === nav.title ? "text-white" : "text-secondary"}`}
                   onClick={() => {
-                    setToggle(!toggle);
-                    setActive(nav.title);
+                    handleToggle();
+                    handleSetActive(nav.title);
                   }}
                 >
                   <a href={`#${nav.id}`}>{nav.title}</a>
@@ -83,4 +84,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default React.memo(Navbar);
